@@ -1,22 +1,28 @@
-import { addContact } from "../service/index.js";
+import {addContact, modifyContact, deleteContact} from "../service/index.js";
+
+
 
 const getState = ({getStore, getActions, setStore}) => {
-	return {
-	  store: {
-		contactList: [],
+  return {
+    store: {
+      contactList: [],
+    },
+    actions: {
+      addContactList: (info) => {
+        setStore({contactList: info});
+      },
+      addSingleContact: (contact) => {
+        addContact(contact);
+      },
+	  modifySingleContact : (contact, id) =>{
+		modifyContact(contact, id)
 	  },
-	  actions: {
-		addContactList: (info) => {
-		  setStore({contactList: info});
-		},
-		addSingleContact: (contact) =>{
-			console.log("en el flux",contact)
-			addContact(contact)
-			
-		}
-	  },
-	};
+	  deleteSingleContact : (id) =>{
+		deleteContact(id)
+	  }
+	  
+    },
   };
-  
-  export default getState;
-  
+};
+
+export default getState;
