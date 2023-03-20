@@ -1,3 +1,5 @@
+import { addContact } from "../service/index.js";
+
 const getState = ({getStore, getActions, setStore}) => {
 	return {
 	  store: {
@@ -7,6 +9,11 @@ const getState = ({getStore, getActions, setStore}) => {
 		addContactList: (info) => {
 		  setStore({contactList: info});
 		},
+		addSingleContact: (contact) =>{
+			console.log("en el flux",contact)
+			addContact(contact)
+			
+		}
 	  },
 	};
   };
