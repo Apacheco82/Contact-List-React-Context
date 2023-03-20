@@ -30,16 +30,22 @@ export const Formulario = () => {
   };
 
   return (
-    <>
+    <div className="container container-fluid">
       <form onChange={handleChange} onSubmit={handleData}>
-        <h3>Añade un contact</h3>
-        <input type="text" name="full_name" value={contact.full_name} placeholder="nombre"  ></input>
-        <input type="text" name="email" value={contact.email} placeholder="email" ></input>
-        <input type="text" name="address" value={contact.address} placeholder="direccion"></input>
-        <input type="text" name="phone" value={contact.phone} placeholder="telefono"></input>
+        <h3>Add A New Contact
+        </h3>
+        <input type="text" name="full_name" value={contact.full_name} placeholder="Name"  ></input>
+        <input type="email" name="email" value={contact.email} placeholder="eMail" ></input>
+        <input type="text" name="address" value={contact.address} placeholder="Address"></input>
+        <input type="text" name="phone" value={contact.phone} placeholder="Phone Number"></input>
         <input type="submit" className="btn btn-success" value="Add New Contact"></input>
       </form>
-    </>
+      <Link to="/">
+            <button className="btn btn-success" role="button" id="home" >
+              Back to Home
+            </button>
+          </Link>
+    </div>
   );
 };
 
