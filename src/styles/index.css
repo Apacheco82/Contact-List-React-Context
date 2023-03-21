@@ -1,6 +1,14 @@
 body {
     font-family: 'Montserrat', sans-serif;
+}
 
+.modal-content {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: black;
+}
+#deletebtn{
+    background-color:#BB2D3B !important;
 }
 
 .navbar {
@@ -26,19 +34,28 @@ footer {
     margin-right: auto;
     margin-left: auto;
 }
-.home{
+
+.home {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-right: auto;
     margin-left: auto;
-    
+
 }
-#btnHome{
+#avatar{
+    width: 75px;
+    height: 75px;
+    border-radius: 50px;
+}
+
+#btnHome {
     margin-top: 15px;
+    margin-bottom: 50px;
 }
+
 input {
     border-radius: 10px;
     padding: 5px;
@@ -66,22 +83,35 @@ p {
     width: 100%;
     text-align: center;
 }
-.contacts{
+
+.contacts {
     width: 50%;
     margin-right: auto;
     margin-left: auto;
     border: teal 0.5px solid;
     border-radius: 5px;
     margin-bottom: 5px;
+    padding: 5px;
 }
+
 .contact-info {
     display: flex;
     justify-content: space-between;
-  }
-  .icons-container {
+}
+
+.icons-container {
     margin-left: auto;
     margin-right: 10px;
-  }
-  .icons-container > i {
+    font-size: 20px;
+}
+
+.icons-container>i {
     margin-right: 5px;
-  }
+}
+
+i {
+    color: teal;
+}
+.fa-xmark{
+    font-size: 25px;
+}
