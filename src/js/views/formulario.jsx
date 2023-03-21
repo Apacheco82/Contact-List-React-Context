@@ -45,11 +45,11 @@ return (
     ) : null}
     <form onChange={handleChange} onSubmit={handleData}>
       <h3>Add A New Contact</h3>
-      <input type="text" name="full_name" value={contact.full_name} placeholder="Name"></input>
-      <input type="email" name="email" value={contact.email} placeholder="eMail"></input>
-      <input type="text" name="address" value={contact.address} placeholder="Address"></input>
-      <input type="text" name="phone" value={contact.phone} placeholder="Phone Number"></input>
-      <input type="submit" className="btn btn-success" defaultValue="Add New Contact"></input>
+      <input type="text" name="full_name" defaultValue={contact.full_name} placeholder="Name"></input>
+      <input type="email" name="email" defaultValue={contact.email} placeholder="eMail"></input>
+      <input type="text" name="address" defaultValue={contact.address} placeholder="Address"></input>
+      <input type="text" name="phone" defaultValue={contact.phone} placeholder="Phone Number"></input>
+      <input type="submit" className="btn btn-success" value="Add New Contact"></input>
     </form>
     <Link to="/">
       <button className="btn btn-success" role="button" id="home">

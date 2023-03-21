@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import {Context} from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Contacts = (props) => {
   const {store, actions} = useContext(Context); //contexto global
@@ -7,9 +8,9 @@ export const Contacts = (props) => {
   const handleDelete = () => {
     actions.deleteSingleContact(props.id);
   };
-  const handleModify = ()=>{
-    actions.modifySingleContact()
-  }
+  const handleModify = () => {
+    actions.modifySingleContact();
+  };
 
   return (
     <div className="contacts">
@@ -21,7 +22,10 @@ export const Contacts = (props) => {
           <i className="fa-solid fa-xmark" onClick={handleDelete}>
             {" "}
           </i>
-          <i className="fa-solid fa-pen" onClick={handleModify}></i>
+          <Link to={`/editcontact/${props.id}`}>
+            {" "}
+            <i className="fa-solid fa-pen"></i>
+          </Link>
         </div>
       </div>
       <div>
