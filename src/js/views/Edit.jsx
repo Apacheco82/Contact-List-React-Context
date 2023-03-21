@@ -1,12 +1,14 @@
 import React, {useState, useEffect, useContext} from "react";
 import {Context} from "../store/appContext";
 import {Link, useParams} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 export const Edit = () => {
   const {store, actions} = useContext(Context); //contexto global
   const params = useParams(); //los params de la url (ver layout.js) en este caso solo es el id del contacto
   //console.log(params) por comprobar lo que traemos
   //console.log(store.contactList)
+  const navigate = useNavigate(); //para poder volver al home (por ejemplo cuando se termine el handledata)
 
   const editContact = store.contactList.filter((item) => item.id === params.id); //se filtra el array para recoger el id que hemos traido en la url
   const finalContact = editContact[0]; //como lo que queremos es un objeto, accedemos por la posicion 0
@@ -32,16 +34,17 @@ export const Edit = () => {
     se le pasa contacto e id para acomodarnos a la url que necesitamos para el put*/
 
     setAlert(true); //al terminar esta accion le decimos que se muestre el alert
-    //falta ver como volver al home 
+    navigate("/"); //para volver al home
   };
 
-  setTimeout(() => { //el tiempo que se va a mostrar en pantalla el alert
+  setTimeout(() => {
+    //el tiempo que se va a mostrar en pantalla el alert
     setAlert(false);
   }, 10000);
 
   return (
     <div className="container container-fluid">
-      {alert ?  (
+      {alert ? (
         <div
           className="alert alert-success alert-dismissible fade show"
           role="alert"
@@ -55,14 +58,26 @@ export const Edit = () => {
           type="text"
           name="full_name"
           defaultValue={contact.full_name}
+          required
         ></input>
-        <input type="email" name="email" defaultValue={contact.email}></input>
+        <input
+          type="email"
+          name="email"
+          defaultValue={contact.email}
+          required
+        ></input>
         <input
           type="text"
           name="address"
           defaultValue={contact.address}
+          required
         ></input>
-        <input type="text" name="phone" defaultValue={contact.phone}></input>
+        <input
+          type="text"
+          name="phone"
+          defaultValue={contact.phone}
+          required
+        ></input>
         <input
           type="submit"
           className="btn btn-success"
