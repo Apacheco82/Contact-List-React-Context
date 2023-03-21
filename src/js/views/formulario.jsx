@@ -33,7 +33,7 @@ export const Formulario = () => {
 
   setTimeout(() => {
     setAlert(false);
-  }, 5000); // Cambia el valor "3000" al número de milisegundos que desees que aparezca el alert
+  }, 5000);// Cambia el valor "3000" al número de milisegundos que desees que aparezca el alert
 ;
 
 return (
