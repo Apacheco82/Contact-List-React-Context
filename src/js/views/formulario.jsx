@@ -15,6 +15,7 @@ export const Formulario = () => {
   const {store, actions} = useContext(Context); //contexto global
   const [contact, setContact] = useState(initialState); //el obj contact que viene de useState, se inicializa desde initialState
   const [load, setLoad] = useState(false); //para mostrar un alert al cargar, como si fuera un spinner
+  
 
   const handleChange = (e) => {
     const value = e.target.value; //se obtiene el valor del input
@@ -26,6 +27,7 @@ export const Formulario = () => {
     e.preventDefault(); //para que no recargue la web al darle al boton
     // console.log(contact);
     actions.addSingleContact(contact); //llamamos al flux pasando el contacto relleno y desde ahi irá a index.js a hacer Post
+    console.log("tras meter el contacto",contact)
     setLoad(true); //para mostrar el alert
     setContact(initialState); //para vaciar los inputs
     setTimeout(() => {

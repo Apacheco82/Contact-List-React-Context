@@ -13,12 +13,11 @@ export const Contacts = (props) => {
   /*comentario sobre link: creamos la ruta a la que tenemos que enlazar igual que está definida en layout.js
   en este caso estamos pasando como parametro el id del contacto  */
 
-  // onClick={handleDelete}
 
   return (
     <>
       <div className="contacts">
-        <img src="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/05/07/16203887297193.jpg" id="avatar" />
+       <div className="avatar"> <img src="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/05/07/16203887297193.jpg" id="avatar" /></div>
         <div className="contact-info">
           <div>
             <h4>{props.full_name}</h4>

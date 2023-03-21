@@ -6,7 +6,7 @@ export const getContacts = async () => { //http request para obtener los contact
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log("Error: ", error); //mensaje de error si el get no se hace correctamente
+    console.log("Error en get: ", error); //mensaje de error si el get no se hace correctamente
   }
 };
 
@@ -24,7 +24,7 @@ export const addContact = async (contact) => { //http request para añadir un co
 
     console.log("POST hecho con exito"); //mensaje en consola para saber que se ha realizado con éxito
   } catch (error) {
-    console.log("Error:", error); //mensaje de error si el contacto no se carga
+    console.log("Error en post:", error); //mensaje de error si el contacto no se carga
   }
 };
 
@@ -42,7 +42,7 @@ export const modifyContact = async (contact, id) => { //http request para editar
 
     console.log("PUT hecho con exito"); //mensaje en consola para saber que se ha realizado con éxito
   } catch (error) {
-    console.log("Error:", error); //mensaje de error si el contacto no se modifica
+    console.log("Error en put:", error); //mensaje de error si el contacto no se modifica
   }
 };
 
@@ -58,6 +58,6 @@ export const deleteContact = async (id) => { //http request para borrar un conta
 
     console.log("Delete hecho con exito"); //mensaje en consola para saber que se ha realizado con éxito
   } catch (error) {
-    console.log("Error:", error); //mensaje de error si el contacto no se borra
+    console.log("Error en del:", error); //mensaje de error si el contacto no se borra
   }
 };

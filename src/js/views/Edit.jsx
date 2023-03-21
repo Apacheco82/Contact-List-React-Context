@@ -40,7 +40,7 @@ export const Edit = () => {
   setTimeout(() => {
     //el tiempo que se va a mostrar en pantalla el alert
     setAlert(false);
-  }, 10000);
+  }, 5000);
 
   return (
     <div className="container container-fluid">
