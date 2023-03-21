@@ -1,4 +1,4 @@
-export const getContacts = async () => {
+export const getContacts = async () => { //http request para obtener los contactos de la agenda
   const URL = "https://assets.breatheco.de/apis/fake/contact/agenda/apacheco";
 
   try {
@@ -10,7 +10,7 @@ export const getContacts = async () => {
   }
 };
 
-export const addContact = async (contact) => {
+export const addContact = async (contact) => { //http request para añadir un contacto a la agenda
   const URL_Post = "https://assets.breatheco.de/apis/fake/contact/";
 
   try {
@@ -28,7 +28,7 @@ export const addContact = async (contact) => {
   }
 };
 
-export const modifyContact = async (contact, id) => {
+export const modifyContact = async (contact, id) => { //http request para editar un contacto de la agenda
   const URL_Put = "https://assets.breatheco.de/apis/fake/contact/";
 
   try {
@@ -42,11 +42,11 @@ export const modifyContact = async (contact, id) => {
 
     console.log("PUT hecho con exito"); //mensaje en consola para saber que se ha realizado con éxito
   } catch (error) {
-    console.log("Error:", error); //mensaje de error si el contacto no se carga
+    console.log("Error:", error); //mensaje de error si el contacto no se modifica
   }
 };
 
-export const deleteContact = async (id) => {
+export const deleteContact = async (id) => { //http request para borrar un contacto de la agenda
   const URL_Del = "https://assets.breatheco.de/apis/fake/contact/";
 
   try {
@@ -58,6 +58,6 @@ export const deleteContact = async (id) => {
 
     console.log("Delete hecho con exito"); //mensaje en consola para saber que se ha realizado con éxito
   } catch (error) {
-    console.log("Error:", error); //mensaje de error si el contacto no se carga
+    console.log("Error:", error); //mensaje de error si el contacto no se borra
   }
 };

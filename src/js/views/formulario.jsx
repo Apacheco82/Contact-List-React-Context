@@ -3,7 +3,7 @@ import {Context} from "../store/appContext";
 import { Link } from "react-router-dom";
 
 const initialState = {
-  //se crea aquí el objeto vacío porque solo lo vamos a usar en form
+  //se crea aquí el objeto vacío porque solo lo vamos a usar en form para decirle que se vaya siempre a la agenda "apacheco"
   full_name: "",
   email: "",
   address: "",
@@ -14,8 +14,8 @@ const initialState = {
 export const Formulario = () => {
 
   const {store, actions} = useContext(Context); //contexto global
-  const [contact, setContact] = useState(initialState);
-  const [alert, setAlert] = useState(false)
+  const [contact, setContact] = useState(initialState); //el obj contact que viene de useState, se inicializa desde initialState
+  const [alert, setAlert] = useState(false) //para mostrar un alert en pantalla
 
   const handleChange = (e) => {
     const value = e.target.value; //se obtiene el valor del input
@@ -24,16 +24,16 @@ export const Formulario = () => {
   };
 
   const handleData = (e) => {
-    e.preventDefault();
-    console.log(contact);
-    actions.addSingleContact(contact)
-    setContact(initialState)
-    setAlert(true);
+    e.preventDefault(); //para que no recargue la web al darle al boton
+   // console.log(contact);
+    actions.addSingleContact(contact) //llamamos al flux pasando el contacto relleno y desde ahi irá a index.js a hacer Post
+    setContact(initialState) //para vaciar los inputs
+    setAlert(true); //para mostrar el alert
   };
 
   setTimeout(() => {
     setAlert(false);
-  }, 5000);// Cambia el valor "3000" al número de milisegundos que desees que aparezca el alert
+  }, 5000);// el tiempo que va a estar el alert en pantalla
 ;
 
 return (
@@ -45,10 +45,10 @@ return (
     ) : null}
     <form onChange={handleChange} onSubmit={handleData}>
       <h3>Add A New Contact</h3>
-      <input type="text" name="full_name" defaultValue={contact.full_name} placeholder="Name"></input>
-      <input type="email" name="email" defaultValue={contact.email} placeholder="eMail"></input>
-      <input type="text" name="address" defaultValue={contact.address} placeholder="Address"></input>
-      <input type="text" name="phone" defaultValue={contact.phone} placeholder="Phone Number"></input>
+      <input type="text" name="full_name" value={contact.full_name} placeholder="Name"></input>
+      <input type="email" name="email" value={contact.email} placeholder="eMail"></input>
+      <input type="text" name="address" value={contact.address} placeholder="Address"></input>
+      <input type="text" name="phone" value={contact.phone} placeholder="Phone Number"></input>
       <input type="submit" className="btn btn-success" value="Add New Contact"></input>
     </form>
     <Link to="/">
