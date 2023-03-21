@@ -15,6 +15,7 @@ export const Formulario = () => {
 
   const {store, actions} = useContext(Context); //contexto global
   const [contact, setContact] = useState(initialState);
+  const [alert, setAlert] = useState(false)
 
   const handleChange = (e) => {
     const value = e.target.value; //se obtiene el valor del input
@@ -26,26 +27,36 @@ export const Formulario = () => {
     e.preventDefault();
     console.log(contact);
     actions.addSingleContact(contact)
-    setContact(initialState);
+    setContact(initialState)
+    setAlert(true);
   };
 
-  return (
-    <div className="container container-fluid">
-      <form onChange={handleChange} onSubmit={handleData}>
-        <h3>Add A New Contact
-        </h3>
-        <input type="text" name="full_name" value={contact.full_name} placeholder="Name"  ></input>
-        <input type="email" name="email" value={contact.email} placeholder="eMail" ></input>
-        <input type="text" name="address" value={contact.address} placeholder="Address"></input>
-        <input type="text" name="phone" value={contact.phone} placeholder="Phone Number"></input>
-        <input type="submit" className="btn btn-success" defaultValue="Add New Contact"></input>
-      </form>
-      <Link to="/">
-            <button className="btn btn-success" role="button" id="home" >
-              Back to Home
-            </button>
-          </Link>
-    </div>
-  );
+  setTimeout(() => {
+    setAlert(false);
+  }, 5000); // Cambia el valor "3000" al número de milisegundos que desees que aparezca el alert
+;
+
+return (
+  <div className="container container-fluid">
+    {alert ? (
+      <div className="alert alert-success alert-dismissible fade show" role="alert">
+        New contact added successfully!
+      </div>
+    ) : null}
+    <form onChange={handleChange} onSubmit={handleData}>
+      <h3>Add A New Contact</h3>
+      <input type="text" name="full_name" value={contact.full_name} placeholder="Name"></input>
+      <input type="email" name="email" value={contact.email} placeholder="eMail"></input>
+      <input type="text" name="address" value={contact.address} placeholder="Address"></input>
+      <input type="text" name="phone" value={contact.phone} placeholder="Phone Number"></input>
+      <input type="submit" className="btn btn-success" defaultValue="Add New Contact"></input>
+    </form>
+    <Link to="/">
+      <button className="btn btn-success" role="button" id="home">
+        Back to Home
+      </button>
+    </Link>
+  </div>
+);
 };
 

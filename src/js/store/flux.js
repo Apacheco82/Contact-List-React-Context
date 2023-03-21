@@ -1,7 +1,5 @@
 import {addContact, modifyContact, deleteContact} from "../service/index.js";
 
-
-
 const getState = ({getStore, getActions, setStore}) => {
   return {
     store: {
@@ -14,13 +12,12 @@ const getState = ({getStore, getActions, setStore}) => {
       addSingleContact: (contact) => {
         addContact(contact);
       },
-	  modifySingleContact : (contact, id) =>{
-		modifyContact(contact, id)
-	  },
-	  deleteSingleContact : (id) =>{
-		deleteContact(id)
-	  }
-	  
+      modifySingleContact: (contact, id) => {
+        modifyContact(contact, id);
+      },
+      deleteSingleContact: (id) => {
+        deleteContact(id);
+      },
     },
   };
 };
