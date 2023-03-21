@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 export const Contacts = (props) => {
   const {store, actions} = useContext(Context); //contexto global
 
-  const handleDelete = () => {
-    actions.deleteSingleContact(props.id);
-  };
-  const handleModify = () => {
-    actions.modifySingleContact();
+  const handleDelete = () => { //funcion  intermedia para llamar a la funcion de flux 
+    //aqui faltaría meter un modal antes de borrar
+    actions.deleteSingleContact(props.id); //la funcion de flux para borrar pasandole el id
   };
 
+  /*comentario sobre link: creamos la ruta a la que tenemos que enlazar igual que está definida en layout.js
+  en este caso estamos pasando como parametro el id del contacto  */ 
+  
   return (
     <div className="contacts">
       <div className="contact-info">

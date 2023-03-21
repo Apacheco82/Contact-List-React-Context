@@ -6,7 +6,7 @@ export const getContacts = async () => { //http request para obtener los contact
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log("Error: ", error);
+    console.log("Error: ", error); //mensaje de error si el get no se hace correctamente
   }
 };
 
