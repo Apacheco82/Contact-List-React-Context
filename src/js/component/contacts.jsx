@@ -7,7 +7,6 @@ export const Contacts = (props) => {
 
   const handleDelete = () => {
     //funcion  intermedia para llamar a la funcion de flux
-    //aqui faltaría meter un modal antes de borrar
     actions.deleteSingleContact(props.id); //la funcion de flux para borrar pasandole el id
   };
 
