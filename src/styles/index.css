@@ -1,5 +1,6 @@
 body {
-    font-family: 'Rozha One', serif;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .navbar {
@@ -25,7 +26,19 @@ footer {
     margin-right: auto;
     margin-left: auto;
 }
-
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+#btnHome{
+    margin-top: 15px;
+}
 input {
     border-radius: 10px;
     padding: 5px;
@@ -53,6 +66,22 @@ p {
     width: 100%;
     text-align: center;
 }
-#home{
-    margin-top: 50px;
+.contacts{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    border: teal 0.5px solid;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+  }
+  .icons-container {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+  .icons-container > i {
+    margin-right: 5px;
+  }
