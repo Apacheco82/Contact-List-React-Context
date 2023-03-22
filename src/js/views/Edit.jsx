@@ -38,7 +38,7 @@ export const Edit = () => {
       //el tiempo que se va a mostrar en pantalla el alert
       setAlert(false); 
       navigate("/"); //para volver al home;
-    }, 1500);
+    }, 2000);
   };
 
   return (
