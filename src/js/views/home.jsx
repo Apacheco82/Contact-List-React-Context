@@ -13,7 +13,7 @@ export const Home = () => {
     const getAgendaContacts = async () => { //se crea una funcion para traer los contactos de la agenda
       const data = await getContacts(); //se llama a la funcion de index.js para traer los datos y se almacenan en una const
       actions.addContactList(data); //se llama a la funcion de flux para setear esos datos al estado global
-      setLoad(true)
+      setLoad(true) //se cambia para ver el spinner hasta que venga el get
      // console.log("la data", store.contactList);
     };
   

@@ -37,23 +37,28 @@ export const Formulario = () => {
 
     //convertimos el if else de arriba a ternario
     setStatus(resultado == 200 ? "Contact added successfully" : resultado.msg);
-
     setLoad(true); //para mostrar el alert
     setContact(initialState); //para vaciar los inputs
     setTimeout(() => {
       //para mostrar el alert dos segundos antes de quitarlo
       setLoad(false);
-      
     }, 2000);
   };
+
 
   return (
     <div className="container container-fluid">
       {load ? (
-     <div className={`alert ${status === "Contact added successfully" ? " alert-success" : " alert-danger"}`} role="alert">
-     {status}
-    </div>
-    
+        <div
+          className={`alert ${
+            status === "Contact added successfully"
+              ? " alert-success"
+              : " alert-danger"
+          }`}
+          role="alert"
+        >
+          {status}
+        </div>
       ) : (
         <>
           <form onChange={handleChange} onSubmit={handleData}>
@@ -63,6 +68,8 @@ export const Formulario = () => {
               name="full_name"
               value={contact.full_name}
               placeholder="Name"
+              pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]*$"
+              title="Please enter a valid name"
               required
             ></input>
             <input
@@ -84,6 +91,8 @@ export const Formulario = () => {
               name="phone"
               value={contact.phone}
               placeholder="Phone Number"
+              pattern="[0-9]{9}" // Expresión regular que permite solo 9 dígitos
+              title="Please enter a valid 9 digit phone number"
               required
             ></input>
             <input
