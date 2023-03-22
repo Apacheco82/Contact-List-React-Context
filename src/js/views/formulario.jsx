@@ -43,6 +43,7 @@ export const Formulario = () => {
     setTimeout(() => {
       //para mostrar el alert dos segundos antes de quitarlo
       setLoad(false);
+      
     }, 2000);
   };
 
