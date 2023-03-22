@@ -34,61 +34,65 @@ export const Edit = () => {
     se le pasa contacto e id para acomodarnos a la url que necesitamos para el put*/
 
     setAlert(true); //al terminar esta accion le decimos que se muestre el alert
-    navigate("/"); //para volver al home
+    setTimeout(() => {
+      //el tiempo que se va a mostrar en pantalla el alert
+      setAlert(false);
+      navigate("/"); //para volver al home dentro del timeout para que lo haga a continuación de quitar el alert
+    }, 2000);
   };
-
-  setTimeout(() => {
-    //el tiempo que se va a mostrar en pantalla el alert
-    setAlert(false);
-  }, 5000);
 
   return (
     <div className="container container-fluid">
       {alert ? (
-        <div
-          className="alert alert-success alert-dismissible fade show"
-          role="alert"
-        >
+        <div className="alert alert-success" role="alert">
           Contact updated!
         </div>
-      ) : null}
-      <form onChange={handleChange} onSubmit={handleData}>
-        <h3>Update Contact</h3>
-        <input
-          type="text"
-          name="full_name"
-          defaultValue={contact.full_name}
-          required
-        ></input>
-        <input
-          type="email"
-          name="email"
-          defaultValue={contact.email}
-          required
-        ></input>
-        <input
-          type="text"
-          name="address"
-          defaultValue={contact.address}
-          required
-        ></input>
-        <input
-          type="text"
-          name="phone"
-          defaultValue={contact.phone}
-          required
-        ></input>
-        <input
-          type="submit"
-          className="btn btn-success"
-          value="Update Contact"
-        ></input>
-      </form>
-      <Link to="/">
-        <button className="btn btn-success" role="button" id="home">
-          Back to Home
-        </button>
-      </Link>
+      ) : (
+        <>
+          {" "}
+          <form onChange={handleChange} onSubmit={handleData}>
+            <h3>Update Contact</h3>
+            <input
+              type="text"
+              name="full_name"
+              defaultValue={contact.full_name}
+              pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]*$"
+              title="Please enter a valid name"
+              required
+            ></input>
+            <input
+              type="email"
+              name="email"
+              defaultValue={contact.email}
+              required
+            ></input>
+            <input
+              type="text"
+              name="address"
+              defaultValue={contact.address}
+              required
+            ></input>
+            <input
+              type="text"
+              name="phone"
+              defaultValue={contact.phone}
+              pattern="[0-9]{9}" // Expresión regular que permite solo 9 dígitos
+              title="Please enter a valid 9 digit phone number"
+              required
+            ></input>
+            <input
+              type="submit"
+              className="btn btn-success"
+              value="Update Contact"
+            ></input>
+          </form>
+          <Link to="/">
+            <button className="btn btn-success" role="button" id="home">
+              Back to Home
+            </button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };

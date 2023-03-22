@@ -11,7 +11,8 @@ const getState = ({getStore, getActions, setStore}) => {
         setStore({contactList: info});//setea el valor partiendo de los datos traidos por el GET
       },
       addSingleContact: (contact) => { //funcion para añadir un solo contacto nuevo a agenda POST
-        addContact(contact); //se llama a una funcion en index.js
+       const resultado = addContact(contact); //se llama a una funcion en index.js y lo que retorne se almacena en Resultado
+       return resultado //retornamos el valor de la const Resultado
       },
       modifySingleContact: (contact, id) => { //funcion para editar un contacto por id PUT
         modifyContact(contact, id);//se llama a una funcion en index.js

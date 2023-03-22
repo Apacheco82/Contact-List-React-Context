@@ -24,14 +24,15 @@ export const addContact = async (contact) => {
       redirect: "follow",
     });
     // console.log("status",response.status)
-    if (response.status == 200) {
+
+    if (response.status == 200) { //si el status == 200 es que ha ido bien
       console.log("POST hecho con exito");
-    } else {
-      const data = await response.json();
-      console.log(data);
-      return data;
+      return response.status; //retornamos únicamente el status 200
+    } else { //si el estatus no es 200, hay que devolver el mensaje de error
+      console.log("ERROR:", data);
+      const data = await response.json(); //convertimos a JSON la response y la guardamos en data
+      return data; //retornamos el data con el mensaje de error en formato JSON
     }
-    
   } catch (error) {
     console.log("Error en post:", error); //mensaje de error si falla el servidor
   }

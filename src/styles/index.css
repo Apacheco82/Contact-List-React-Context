@@ -119,3 +119,7 @@ i {
 .fa-xmark{
     font-size: 25px;
 }
+.spinner-border{
+    color: teal;
+    margin: 50px;
+}
