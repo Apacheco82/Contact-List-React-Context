@@ -15,6 +15,7 @@ export const Formulario = () => {
   const {store, actions} = useContext(Context); //contexto global
   const [contact, setContact] = useState(initialState); //el obj contact que viene de useState, se inicializa desde initialState
   const [load, setLoad] = useState(false); //para mostrar un alert al cargar, como si fuera un spinner
+  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
     const value = e.target.value; //se obtiene el valor del input
@@ -24,12 +25,23 @@ export const Formulario = () => {
 
   const handleData = async (e) => {
     e.preventDefault(); //para que no recargue la web al darle al boton
-    // console.log(contact);
-    const result = await actions.addSingleContact(contact); //llamamos al flux pasando el contacto relleno y desde ahi irá a index.js a hacer Post
-    //console.log("tras meter el contacto", contact);
+    /*llamamos al flux pasando el contacto relleno y desde ahi irá a index.js a hacer Post
+      esto devolverá un status 200 o un objeto con un mensaje de error*/
+    const resultado = await actions.addSingleContact(contact);
+
+    /*  if (resultado == 200) { //si el resultado es igual al estatus 200
+      setStatus("Contact added successfully"); //seteamos a status un texto fijo indicando que el contacto se ha añadido
+    } else { //si el resultado ha devuelto un JSON de errores
+      setStatus(resultado.msg); //recogemos el MSG del JSON y lo seteamos a status
+    } */
+
+    //convertimos el if else de arriba a ternario
+    setStatus(resultado == 200 ? "Contact added successfully" : resultado.msg);
+
     setLoad(true); //para mostrar el alert
     setContact(initialState); //para vaciar los inputs
-    setTimeout(() => {//para mostrar el alert dos segundos antes de quitarlo
+    setTimeout(() => {
+      //para mostrar el alert dos segundos antes de quitarlo
       setLoad(false);
     }, 2000);
   };
@@ -37,12 +49,12 @@ export const Formulario = () => {
   return (
     <div className="container container-fluid">
       {load ? (
-        <div className="alert alert-success" role="alert">
-          New contact added successfully!
-        </div>
+     <div className={`alert ${status === "Contact added successfully" ? " alert-success" : " alert-danger"}`} role="alert">
+     {status}
+    </div>
+    
       ) : (
         <>
-          {" "}
           <form onChange={handleChange} onSubmit={handleData}>
             <h3>Add A New Contact</h3>
             <input

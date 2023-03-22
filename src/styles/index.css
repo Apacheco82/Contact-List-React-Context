@@ -119,3 +119,7 @@ i {
 .fa-xmark{
     font-size: 25px;
 }
+.alert-green {
+    background-color: #4CAF50 !important;
+    color: white;
+  }
