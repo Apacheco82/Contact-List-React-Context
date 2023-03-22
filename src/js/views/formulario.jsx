@@ -16,22 +16,20 @@ export const Formulario = () => {
   const [contact, setContact] = useState(initialState); //el obj contact que viene de useState, se inicializa desde initialState
   const [load, setLoad] = useState(false); //para mostrar un alert al cargar, como si fuera un spinner
 
-
   const handleChange = (e) => {
     const value = e.target.value; //se obtiene el valor del input
     const name = e.target.name; //se obtiene el nombre del campo del input
     setContact({...contact, [name]: value}); //se añade el valor al campo de nombre de input haciendo una copia del objeto
   };
 
-  const handleData = (e) => {
+  const handleData = async (e) => {
     e.preventDefault(); //para que no recargue la web al darle al boton
     // console.log(contact);
-    actions.addSingleContact(contact); //llamamos al flux pasando el contacto relleno y desde ahi irá a index.js a hacer Post
-    console.log("tras meter el contacto", contact);
+    const result = await actions.addSingleContact(contact); //llamamos al flux pasando el contacto relleno y desde ahi irá a index.js a hacer Post
+    //console.log("tras meter el contacto", contact);
     setLoad(true); //para mostrar el alert
     setContact(initialState); //para vaciar los inputs
-    setTimeout(() => {
-      //para mostrar el alert dos segundos antes de quitarlo
+    setTimeout(() => {//para mostrar el alert dos segundos antes de quitarlo
       setLoad(false);
     }, 2000);
   };
@@ -39,10 +37,7 @@ export const Formulario = () => {
   return (
     <div className="container container-fluid">
       {load ? (
-        <div
-          className="alert alert-success"
-          role="alert"
-        >
+        <div className="alert alert-success" role="alert">
           New contact added successfully!
         </div>
       ) : (

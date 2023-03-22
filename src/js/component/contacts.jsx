@@ -16,7 +16,7 @@ export const Contacts = (props) => {
     actions.saveId(""); //seteamos de nuevo el store.id a VACÍO para que se quede preparado para la siguiente acción de borrado
   };
 
-  /*comentario sobre link: creamos la ruta a la que tenemos que enlazar igual que está definida en layout.js
+  /* comentario sobre link: creamos la ruta a la que tenemos que enlazar igual que está definida en layout.js
   en este caso estamos pasando como parametro el id del contacto  */
 
   return (
@@ -43,7 +43,7 @@ export const Contacts = (props) => {
               <div
                 className="modal fade"
                 id="exampleModal"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
               >
